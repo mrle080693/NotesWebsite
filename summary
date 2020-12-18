@@ -1,0 +1,7 @@
+cmd
+ng g component componentName
+ng test
+
+add test coverage report
+angular.json -> in section test add "codeCoverage": true
+report will be in coverage/index.html after ng test
