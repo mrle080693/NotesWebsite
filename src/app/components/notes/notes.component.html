@@ -1,0 +1,49 @@
+<div class="container">
+  <div *ngIf="!showDivMainContent" id="reception">
+    <br>
+    <br>
+    <br>
+    <h1>Write Your Name And Password</h1>
+    <input class="form-control" type="text" placeholder="Username" #username>
+    <br>
+    <input class="form-control" type="password" placeholder="Password" #password>
+    <button type="button" class="btn btn-info float-right" (click)="loadFromApi(username.value, password.value)">Ok</button>
+  </div>
+
+  <div *ngIf="showDivMainContent" id="divMainContent">
+    <div id="divSaveNotesToServer">
+      <button type="button" class="btn btn-info float-right" (click)="saveToApi()">Save all changes</button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <h1>Just Notes</h1>
+
+    <div id="addNote">
+    <textarea class="form-control" type="text" placeholder="Just write your note here and click add :)"
+              #note></textarea>
+      <button type="button" class="btn btn-info float-right" (click)="addNote(note.value)">Add</button>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="divNotes">
+      <ul>
+        <li *ngFor="let note of notes" #note>
+          <div class="row">
+            <div class="col">
+              <p>{{note.noteMessage}}</p>
+            </div>
+            <div class="col">
+              <button type="button" class="btn-danger" style="margin-left: auto" (click)="deleteNote(note.noteMessage)">
+                Delete
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
